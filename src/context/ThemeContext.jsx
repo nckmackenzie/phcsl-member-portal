@@ -4,7 +4,7 @@ import { useLocalStorageState } from '../hooks/useLocalStorageState';
 const ThemeContext = createContext();
 
 const ThemeProvider = function ({ children }) {
-  const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, 'isDarkMode');
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, 'DarkMode');
 
   function toggleTheme() {
     setIsDarkMode(isDark => !isDark);
