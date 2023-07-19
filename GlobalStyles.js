@@ -85,6 +85,10 @@ const GlobalStyles = createGlobalStyle`
     --border-radius-md: 7px;
     --border-radius-lg: 9px;
   }
+
+  body {
+     color: var(--color-grey-700);
+  }
   
   select:disabled,
   input:disabled {
