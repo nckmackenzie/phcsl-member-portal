@@ -73,7 +73,12 @@ const GlobalStyles = createGlobalStyle`
       --image-opacity: 90%;
     }
 
+    --color-brand-50: #c2c1da;
+    --color-brand-200: #9997c2;
+    --color-brand-400: #332f84;
     --color-brand-500: #2e2a77;
+    --color-brand-600: #29266a;
+    --color-brand-700: #24215c;
         
     --border-radius-tiny: 3px;
     --border-radius-sm: 5px;
