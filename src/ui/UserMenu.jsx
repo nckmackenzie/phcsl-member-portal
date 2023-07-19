@@ -24,6 +24,11 @@ const UserAvatar = styled.img`
   width: 3rem;
   aspect-ratio: 1;
   border-radius: 50%;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 const UserName = styled.p`
