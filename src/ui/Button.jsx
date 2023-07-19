@@ -32,7 +32,8 @@ const variations = {
     }
 
     &:disabled {
-      background-color: var(--color-brand-200);
+      background-color: var(--color-brand-50);
+      color: var(--color-brand-700);
     }
   `,
 
