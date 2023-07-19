@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import GlobalStyles from '../GlobalStyles';
+import ProtectedRoute from './pages/ProtectedRoute';
+import AppLayout from './ui/AppLayout';
 
 const queryClient = new QueryClient();
 
@@ -18,7 +20,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Dashboard />} />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route path="/" element={<Dashboard />} />
+            </Route>
           </Routes>
         </BrowserRouter>
         <Toaster
