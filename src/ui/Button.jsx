@@ -30,6 +30,10 @@ const variations = {
     &:hover {
       background-color: var(--color-brand-700);
     }
+
+    &:disabled {
+      background-color: var(--color-brand-200);
+    }
   `,
 
   outlined: css`
@@ -56,9 +60,14 @@ const Button = styled.button`
   text-transform: uppercase;
   border: none;
   border-radius: var(--border-radius-sm);
+  cursor: pointer;
 
   ${props => variations[props.variant]}
   ${props => sizes[props.size]}
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 Button.defaultProps = {
