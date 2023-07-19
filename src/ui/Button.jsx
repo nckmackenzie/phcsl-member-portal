@@ -67,7 +67,7 @@ const variations = {
 };
 
 const Button = styled.button`
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border: none;
   border-radius: var(--border-radius-sm);
   cursor: pointer;
