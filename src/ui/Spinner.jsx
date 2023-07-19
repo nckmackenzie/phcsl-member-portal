@@ -14,7 +14,7 @@ const StyledSpinner = styled.div`
       & svg {
         width: 1.5rem;
         height: 1.5rem;
-        fill: var(--color-brand-50);
+        fill: currentColor;
         animation: ${rotate} 1.5s infinite linear;
       }
     `}
