@@ -4,16 +4,30 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 
 const StyledAppLayout = styled.div`
-  display: grid;
-  grid-template-columns: 16.25rem 1fr;
-  grid-template-rows: auto 1fr;
+  display: flex;
+  overflow: hidden;
   height: 100dvh;
+  /* display: grid;
+  grid-template-columns: 16.25rem 1fr;
+  grid-template-rows: auto 1fr; */
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
 `;
 
 const Main = styled.main`
   background-color: var(--color-grey-50);
-  padding: 2.5rem 3rem 4rem;
+  padding: 1.5rem 1.5rem 3rem;
+  height: calc(100dvh - 6rem);
   overflow: scroll;
+
+  @media (min-width: 1024px) {
+    padding: 2.5rem 3rem 4rem;
+  }
+  /* height: 890px */
 `;
 
 const Container = styled.div`
@@ -27,13 +41,15 @@ const Container = styled.div`
 function AppLayout() {
   return (
     <StyledAppLayout>
-      <Header />
       <Sidebar />
-      <Main>
-        <Container>
-          <Outlet />
-        </Container>
-      </Main>
+      <ContentWrapper>
+        <Header />
+        <Main>
+          <Container>
+            <Outlet />
+          </Container>
+        </Main>
+      </ContentWrapper>
     </StyledAppLayout>
   );
 }
