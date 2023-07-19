@@ -1,23 +1,29 @@
 import { styled } from 'styled-components';
 import { useUser } from '../features/authentication/useUser';
+import { useTheme } from '../context/ThemeContext';
+import {
+  HiChevronDown,
+  HiChevronUp,
+  HiOutlineArrowLeftOnRectangle,
+  HiOutlineMoon,
+  HiOutlineSun,
+} from 'react-icons/hi2';
+import { useState } from 'react';
+import { useOutsideClick } from '../hooks/useOutsideClick';
+import { useLogout } from '../features/authentication/useLogout';
 
 const StyledUserMenu = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  /* cursor: pointer;
+  position: relative;
+  cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius-sm);
-
-  &:hover {
-    background-color: var(--color-grey-100);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  } */
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 `;
 
 const UserAvatar = styled.img`
   width: 3rem;
   aspect-ratio: 1;
+  border-radius: 50%;
 `;
 
 const UserName = styled.p`
@@ -27,18 +33,79 @@ const UserName = styled.p`
   color: var(--color-grey-800);
 `;
 
+const DropDown = styled.div`
+  position: absolute;
+  right: 0;
+  margin-top: 1rem;
+  background-color: var(--color-grey-0);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: var(--border-radius-sm);
+  width: 15rem;
+  border: 1px solid var(--color-grey-100);
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+
+    & li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+      color: inherit;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-grey-100);
+      }
+
+      &:hover {
+        background-color: var(--color-grey-50);
+      }
+    }
+  }
+`;
+
 function UserMenu() {
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useUser();
+  const { isDarkMode, toggleTheme } = useTheme();
+  const ref = useOutsideClick(close);
+  const { logout } = useLogout();
+
+  function close() {
+    setIsOpen(false);
+  }
   const src =
     user?.user_metadata?.avatar ||
-    'https://igqjyslipxclzwcefxrb.supabase.co/storage/v1/object/sign/avatars/default-user.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL2RlZmF1bHQtdXNlci5qcGciLCJpYXQiOjE2ODk3NjQxODYsImV4cCI6MTcyMTMwMDE4Nn0.OK70TmAKYENoOoALgJSCsgtdITzrN2pHf704CrV9lQI&t=2023-07-19T10%3A56%3A26.266Z';
+    import.meta.env.VITE_REACT_APP_DEFAULT_AVATAR;
   const fullName = user?.user_metadata?.fullName || 'administrator';
 
-  //   console.log(user);
   return (
-    <StyledUserMenu>
-      <UserAvatar src={src} alt={`Avatar for user ${fullName}`} />
-      <UserName>{fullName}</UserName>
+    <StyledUserMenu onClick={() => setIsOpen(open => !open)} ref={ref}>
+      <div className="flex items-center gap-2">
+        <UserAvatar src={src} alt={`Avatar for user ${fullName}`} />
+        <UserName>{fullName}</UserName>
+        {isOpen ? <HiChevronUp /> : <HiChevronDown />}
+      </div>
+      {isOpen && (
+        <DropDown>
+          <ul>
+            <li onClick={toggleTheme}>
+              {isDarkMode ? (
+                <HiOutlineSun size={24} />
+              ) : (
+                <HiOutlineMoon size={24} />
+              )}
+              <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+            </li>
+            <li onClick={logout}>
+              <HiOutlineArrowLeftOnRectangle size={24} />
+              <span>Logout</span>
+            </li>
+          </ul>
+        </DropDown>
+      )}
     </StyledUserMenu>
   );
 }
