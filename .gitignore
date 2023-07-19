@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 test.css
+src/ui/Header-headless.jsx
