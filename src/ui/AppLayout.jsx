@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { SidebarProvider } from '../context/SidebarContext';
 
 const StyledAppLayout = styled.div`
   display: flex;
@@ -40,17 +41,19 @@ const Container = styled.div`
 
 function AppLayout() {
   return (
-    <StyledAppLayout>
-      <Sidebar />
-      <ContentWrapper>
-        <Header />
-        <Main>
-          <Container>
-            <Outlet />
-          </Container>
-        </Main>
-      </ContentWrapper>
-    </StyledAppLayout>
+    <SidebarProvider>
+      <StyledAppLayout>
+        <Sidebar />
+        <ContentWrapper>
+          <Header />
+          <Main>
+            <Container>
+              <Outlet />
+            </Container>
+          </Main>
+        </ContentWrapper>
+      </StyledAppLayout>
+    </SidebarProvider>
   );
 }
 
