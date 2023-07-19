@@ -57,6 +57,7 @@ function LoginForm() {
               placeholder="test@phcsl.co.ke"
               type="email"
               id="email"
+              defaultValue="test@phcsl.co.ke"
               {...register('email', {
                 required: 'Provide your email',
                 pattern: {
@@ -71,6 +72,7 @@ function LoginForm() {
               placeholder="password"
               type="password"
               id="password"
+              defaultValue="deuces"
               {...register('password', {
                 required: 'Password is required',
                 minLength: {
