@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import Logo from './Logo';
 import { useSidebar } from '../context/SidebarContext';
 import { useOutsideClick } from '../hooks/useOutsideClick';
+import MainNav from './MainNav';
 // import MainNav from './MainNav';
 // import Uploader from '../data/Uploader';
 
@@ -44,8 +45,7 @@ function Sidebar() {
   return (
     <StyledSidebar opened={opened.toString()} ref={ref}>
       <Logo />
-      {/* <Logo />
-      <MainNav /> */}
+      <MainNav />
     </StyledSidebar>
   );
 }
