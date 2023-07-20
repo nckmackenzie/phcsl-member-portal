@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { css, styled } from 'styled-components';
 
 const StyledTabs = styled.div`
@@ -38,8 +37,7 @@ const Tab = styled.button`
 
 const TABS = ['My Details', 'Security'];
 
-function Tabs() {
-  const [activeTab, setActiveTab] = useState('My Details');
+function Tabs({ activeTab, setActiveTab }) {
   function handleClick(e) {
     setActiveTab(e.target.textContent);
   }
