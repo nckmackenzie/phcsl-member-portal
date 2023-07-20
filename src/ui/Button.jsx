@@ -40,7 +40,8 @@ const variations = {
   outlined: css`
     color: var(--color-grey-600);
     background: var(--color-grey-0);
-    border: 1px solid var(--color-brand-200);
+    /* border: 1px solid var(--color-brand-200); */
+    box-shadow: inset 0 0 0 1px var(--color-brand-200);
 
     &:hover {
       background-color: var(--color-grey-50);
