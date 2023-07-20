@@ -3,6 +3,7 @@ import Logo from './Logo';
 import { useSidebar } from '../context/SidebarContext';
 import { useOutsideClick } from '../hooks/useOutsideClick';
 import MainNav from './MainNav';
+import useMediaQuery from '../hooks/useMediaQuery';
 // import MainNav from './MainNav';
 // import Uploader from '../data/Uploader';
 
@@ -40,11 +41,12 @@ const StyledSidebar = styled.aside`
 `;
 function Sidebar() {
   const { opened, close } = useSidebar();
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const ref = useOutsideClick(close);
 
   return (
     <StyledSidebar opened={opened.toString()} ref={ref}>
-      <Logo />
+      <Logo logoOnly={isDesktop} />
       <MainNav />
     </StyledSidebar>
   );
