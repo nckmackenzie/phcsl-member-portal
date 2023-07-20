@@ -2,6 +2,8 @@ import { css, styled } from 'styled-components';
 import { BsFileEarmarkPdf } from 'react-icons/bs';
 import Tabs from './Tabs';
 import { useState } from 'react';
+import DetailsForm from './DetailsForm';
+import SecurityForm from './SecurityForm';
 
 const StyledProfileBox = styled.div`
   display: flex;
@@ -54,11 +56,11 @@ const FormArea = styled.div`
       max-width: 32rem;
     `}
 
-    border: 1px solid var(--color-grey-100);
+  border: 1px solid var(--color-grey-100);
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-sm);
   border-radius: var(--border-radius-sm);
-  padding: 0.25rem;
+  padding: 0.5rem;
 `;
 
 function ProfileBox() {
@@ -71,7 +73,9 @@ function ProfileBox() {
           <BsFileEarmarkPdf /> <span>Download Statement</span>
         </DownloadButton>
       </Actions>
-      <FormArea type={activeTab}>form area</FormArea>
+      <FormArea type={activeTab}>
+        {activeTab === 'My Details' ? <DetailsForm /> : <SecurityForm />}
+      </FormArea>
     </StyledProfileBox>
   );
 }
