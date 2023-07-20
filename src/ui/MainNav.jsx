@@ -6,6 +6,7 @@ import {
 } from 'react-icons/hi2';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { useSidebar } from '../context/SidebarContext';
 
 const StyledMainNav = styled.nav``;
 
@@ -55,29 +56,30 @@ const StyledLink = styled(NavLink)`
 `;
 
 function MainNav() {
+  const { close } = useSidebar();
   return (
     <StyledMainNav>
       <NavItems>
         <li>
-          <StyledLink to="/">
+          <StyledLink to="/" onClick={close}>
             <HiOutlineHome />
             <span>Dashboard</span>
           </StyledLink>
         </li>
         <li>
-          <StyledLink to="/payments">
+          <StyledLink to="/payments" onClick={close}>
             <HiBanknotes />
             <span>Payments</span>
           </StyledLink>
         </li>
         <li>
-          <StyledLink to="/available-units">
+          <StyledLink to="/available-units" onClick={close}>
             <HiOutlineHomeModern />
             <span>Available Units</span>
           </StyledLink>
         </li>
         <li>
-          <StyledLink to="/my-profile">
+          <StyledLink to="/my-profile" onClick={close}>
             <HiOutlineUser />
             <span>My Profile</span>
           </StyledLink>
