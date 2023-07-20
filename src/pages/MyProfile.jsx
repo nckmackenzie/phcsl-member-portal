@@ -1,5 +1,7 @@
+import ProfileBox from '../features/profile/ProfileBox';
+
 function MyProfile() {
-  return <div></div>;
+  return <ProfileBox />;
 }
 
 export default MyProfile;
