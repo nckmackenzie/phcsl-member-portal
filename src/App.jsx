@@ -7,6 +7,10 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import GlobalStyles from '../GlobalStyles';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Payments from './pages/Payments';
+import AvailableUnits from './pages/AvailableUnits';
+import MyProfile from './pages/MyProfile';
+import NotFound from './pages/NotFound';
 import AppLayout from './ui/AppLayout';
 
 const queryClient = new QueryClient();
@@ -28,7 +32,11 @@ function App() {
               }
             >
               <Route path="/" element={<Dashboard />} />
+              <Route path="/payments" element={<Payments />} />
+              <Route path="/available-units" element={<AvailableUnits />} />
+              <Route path="/my-profile" element={<MyProfile />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
         <Toaster
