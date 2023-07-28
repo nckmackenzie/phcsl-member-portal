@@ -1,9 +1,7 @@
+import DashboardBox from '../features/dashboard/DashboardBox';
+
 function Dashboard() {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
-  );
+  return <DashboardBox />;
 }
 
 export default Dashboard;
