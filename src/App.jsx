@@ -12,6 +12,7 @@ import AvailableUnits from './pages/AvailableUnits';
 import MyProfile from './pages/MyProfile';
 import NotFound from './pages/NotFound';
 import AppLayout from './ui/AppLayout';
+import NewPayment from './pages/NewPayment';
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function App() {
             >
               <Route path="/" element={<Dashboard />} />
               <Route path="/payments" element={<Payments />} />
+              <Route path="/payments/new" element={<NewPayment />} />
               <Route path="/available-units" element={<AvailableUnits />} />
               <Route path="/my-profile" element={<MyProfile />} />
             </Route>
