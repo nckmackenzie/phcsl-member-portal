@@ -47,7 +47,7 @@ function Stats() {
       <Stat
         title="Unit Balances"
         icon={<LiaMoneyCheckAltSolid />}
-        value={formatCurrency('600000')}
+        value={formatCurrency('430000')}
         color="silver"
       />
     </StyledStats>
