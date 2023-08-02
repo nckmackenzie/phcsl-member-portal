@@ -1,5 +1,7 @@
+import PaymentsLayout from '../features/payments/PaymentsLayout';
+
 function Payments() {
-  return <div></div>;
+  return <PaymentsLayout />;
 }
 
 export default Payments;
