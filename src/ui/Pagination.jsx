@@ -11,10 +11,10 @@ const StyledPagination = styled.div`
 `;
 
 const P = styled.p`
-  /* font-size: 0.875rem;
-  margin-left: 0.5rem; */
-  font-size: 1.4rem;
-  margin-left: 0.8rem;
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+  /* font-size: 1.4rem;
+  margin-left: 0.8rem; */
 
   & span {
     font-weight: 600;
