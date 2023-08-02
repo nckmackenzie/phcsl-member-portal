@@ -116,6 +116,10 @@ const GlobalStyles = createGlobalStyle`
   button:has(svg) {
     line-height: 0;
   }
+
+  button:disabled{
+    cursor: not-allowed;
+  }
   
   a {
     color: inherit;
