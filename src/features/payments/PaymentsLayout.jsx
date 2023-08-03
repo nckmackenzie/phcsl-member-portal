@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 import Filter from '../../ui/Filter';
+import PaymentsTable from './PaymentsTable';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 const StyledPaymentsLayout = styled.div`
   display: flex;
@@ -11,11 +13,13 @@ const StyledPaymentsLayout = styled.div`
 const Actions = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 1rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    align-self: auto;
     gap: 0;
   }
 `;
@@ -43,12 +47,15 @@ const CustomizedLink = styled(Link)`
 `;
 
 function PaymentsLayout() {
+  const isTab = useMediaQuery('(min-width: 768px)');
   return (
     <StyledPaymentsLayout>
       <Actions>
         <CustomizedLink to="/payments/new">New Payment</CustomizedLink>
         <Filter filterField="purposeId" options={filterOptions} />
       </Actions>
+      {!isTab && <p>Tilt your screen for a better view</p>}
+      <PaymentsTable />
     </StyledPaymentsLayout>
   );
 }
