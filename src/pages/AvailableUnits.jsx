@@ -1,5 +1,7 @@
+import UnitsLayout from '../features/units/UnitsLayout';
+
 function AvailableUnits() {
-  return <div></div>;
+  return <UnitsLayout />;
 }
 
 export default AvailableUnits;
